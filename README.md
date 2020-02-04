@@ -8,7 +8,7 @@ Run cmake; make; make install
 
 
 I have been working on a generic prestart hook for accelerator cards used 
-in container runtimes like docker or cri-o (https://github.com/zvonkok/oci-decorator).
+in container runtimes like docker or cri-o (https://github.com/openshift-psap/oci-decorator).
 
 The hook is now in a state where for each vendor,  a configuration file can be dropped
 into /etc/oci-decorator/oci-decorator.d/ and the specific framework/feature/card is 
@@ -16,7 +16,7 @@ activated for the container.
 
 I have now two POCs running (1) SolarFlare and (2) NVIDIA.
 
-Here is a sample json config for  NVIDIA (https://raw.githubusercontent.com/zvonkok/oci-decorator/master/oci-nvidia.json)
+Here is a sample json config for  NVIDIA (https://raw.githubusercontent.com/openshift-psap/oci-decorator/master/oci-nvidia.json)
 DO NOT COPY & PASTE :) use the configs from the github repo.
 
 {
