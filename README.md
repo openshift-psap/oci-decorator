@@ -18,7 +18,7 @@ I have now two POCs running (1) SolarFlare and (2) NVIDIA.
 
 Here is a sample json config for  NVIDIA (https://raw.githubusercontent.com/openshift-psap/oci-decorator/master/oci-nvidia.json)
 DO NOT COPY & PASTE :) use the configs from the github repo.
-
+```
 {
     "version": "396.26",
     "log_level": "LOG_DEBUG",
@@ -49,11 +49,12 @@ DO NOT COPY & PASTE :) use the configs from the github repo.
         }
     }
 }
-
+```
 1. How is the hook activated? See the "activation_flag" in the config? Just run
 
 ip-172-31-25-15 oci-decorator (master*) #  docker run  -it -e OCI_NVIDIA=all centos:7 nvidia-smi 
 Fri Jun 15 12:13:52 2018       
+```
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
 |-------------------------------+----------------------+----------------------+
@@ -69,13 +70,13 @@ Fri Jun 15 12:13:52 2018
 |  GPU       PID   Type   Process name                             Usage      |
 |=============================================================================|
 +-----------------------------------------------------------------------------+
-
+```
 PRO:
 - SELinux is of course enforcing, no need to alter the device files, library or binary files, everything is contained.
 - No need to run a container or pod privileged because of some strange SELinux permission issues
 
 2) Running a CUDA workload:
-
+```
 ip-172-31-25-15 oci-decorator (master*) # docker run  -it -e OCI_NVIDIA=all quay.io/zvonkok/cuda-9.2-centos7 /usr/local/cuda-9.2/samples/0_Simple/vectorAdd/vectorAdd   
 
 [Vector addition of 50000 elements]
@@ -84,10 +85,10 @@ CUDA kernel launch with 196 blocks of 256 threads
 Copy output data from the CUDA device to the host memory
 Test PASSED
 Done
-
-3) Wanna run a Solarflare onload enabled containers? Drop the following https://raw.githubusercontent.com/zvonkok/oci-decorator/master/oci-onload.json into 
+```
+3) Wanna run a Solarflare onload enabled containers? Drop the following https://raw.githubusercontent.com/openshift-psap/oci-decorator/master/oci-onload.json into 
 the config directory
-
+```
 {
     "version": "201805",
     "log_level": "LOG_DEBUG",
@@ -109,7 +110,7 @@ the config directory
         }
     }
 }
-
+```
 4) Run a onload enabled container
 
 dell-r730-01 oci-decorator (master*) # docker run -it -e OCI_SOLARFLARE=all centos:7 onload
